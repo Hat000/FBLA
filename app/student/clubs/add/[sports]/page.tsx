@@ -30,8 +30,10 @@ function findPerson(data: any) {
 
 
 export default function SportsAddPage({ params }: { params: { sports: string } }) {
+  console.log(params);
   var data: any = JSON.parse(decodeURIComponent(params.sports));
-  var sports = data.sports;
+  console.log(data.clubs);
+  var clubs = data.clubs;
   let studentInfo = findPerson(data) as any;
   
   console.log("SI1:" + studentInfo);
@@ -42,7 +44,7 @@ export default function SportsAddPage({ params }: { params: { sports: string } }
   console.log(`SI: ${studentInfo}`);
         // @ts-ignore
         try {
-          studentInfo["sports"] = sports;
+          studentInfo["clubs"] = clubs;
         } catch {
           redirect("/student");
         }

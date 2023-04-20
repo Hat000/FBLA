@@ -6,6 +6,6 @@ export default interface student {
   password: string;
   points: number;
   grade: number;
-  sports: [string];
-  clubs: [string];
+  sports: [any];
+  clubs: [any];
 }

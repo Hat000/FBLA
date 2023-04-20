@@ -34,61 +34,62 @@ export default function SportsPage() {
                 <input type="checkbox"
                   onChange={() => setIsChecked1((ch) => !ch)}
                 />
-                <h2 className="m-5">Football</h2>
+                <h2 className="m-5">FBLA</h2>
               </span>
               <span className="flex flex-row bg-gray-200 rounded-lg p-1 pr-5 pl-5 m-5">
                 <input type="checkbox"
                   onChange={() => setIsChecked2((ch) => !ch)}
                 />
-                <h2 className="m-5">Soccer</h2>
+                <h2 className="m-5">SciOly</h2>
               </span>
               <span className="flex flex-row bg-gray-200 rounded-lg p-1 pr-5 pl-5 m-5">
                 <input type="checkbox"
                   onChange={() => setIsChecked3((ch) => !ch)}
                 />
-                <h2 className="m-5">Baseball</h2>
+                <h2 className="m-5">Chess</h2>
               </span>
               <span className="flex flex-row bg-gray-200 rounded-lg p-1 pr-5 pl-5 m-5">
                 <input type="checkbox"
                   onChange={() => setIsChecked4((ch) => !ch)}
                 />
-                <h2 className="m-5">Basketball</h2>
+                <h2 className="m-5">Yearbook</h2>
               </span>
               <span className="flex flex-row bg-gray-200 rounded-lg p-1 pr-5 pl-5 m-5">
-                <input type="checkbox"
+              <input type="checkbox"
                   onChange={() => setIsChecked5((ch) => !ch)}
                 />
-                <h2 className="m-5">Tennis</h2>
+                <h2 className="m-5">Computer Science</h2>
               </span>
               <span className="flex flex-row bg-gray-200 rounded-lg p-1 pr-5 pl-5 m-5">
-                <input type="checkbox"
+              <input type="checkbox"
                   onChange={() => setIsChecked6((ch) => !ch)}
                 />
-                <h2 className="m-5">Cross County/Track</h2>
+                <h2 className="m-5">Debate</h2>
               </span>
               <button onClick={() => {
-                let sports = [];
+                let clubs = [];
                 if (isChecked1) {
-                  sports.push("Football");
+                  clubs.push("FBLA");
                 }
                 if (isChecked2) {
-                  sports.push("Soccer");
+                  clubs.push("SciOly");
                 }
                 if (isChecked3) {
-                  sports.push("Baseball");
+                  clubs.push("Chess");
                 }
                 if (isChecked4) {
-                  sports.push("Basketball");
+                  clubs.push("Yearbook");
                 }
                 if (isChecked5) {
-                  sports.push("Tennis");
+                  clubs.push("CompSci");
                 }
                 if (isChecked6) {
-                  sports.push("Cross County/Track");
+                  clubs.push("Debate");
                 }
 
-                router.push(`/student/sports/add/${JSON.stringify({ sports: sports, id: cookies.studentId})}`)
-              }} className="bg-gray-200 p-3 ml-10 rounded-lg hover:bg-gray-300">Save choices</button>
+                router.push(`/student/clubs/add/${JSON.stringify({ clubs: clubs, id: cookies.studentId})}`)
+              }}
+              className="bg-gray-200 p-3 ml-10 rounded-lg hover:bg-gray-300">Save choices</button>
             </div>
           </div>
         );

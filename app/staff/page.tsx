@@ -22,13 +22,13 @@ function StaffPage() {
       if (lg[1] === parseCookies().loginKey) {
         return (
         <div className="grid h-screen justify-center">
-          <h1>{staffInfo?.lName}, {staffInfo?.fName}</h1>
-          <Link href={"/generate"}>Generate Report</Link>
+          <h1 className="bg-gray-200 w-fit h-fit p-3 rounded">{staffInfo?.lName}, {staffInfo?.fName}</h1>
+          <Link href={"/generate"} className="generateReportButton shadow-lg hover:bg-purple-400 hover:shadow-xl"><h1 className="text-2xl p-3">Generate Report</h1></Link>
           <button onClick={() => {
             destroyCookie(null, "loginKey");
             destroyCookie(null, "staffId");
             router.push("/");
-          }}>Log Out</button>
+          }} className="bg-gray-200 w-fit h-fit p-3 rounded shadow hover:bg-gray-300 hover:shadow-xl ">Log Out</button>
         </div>
       );
       }

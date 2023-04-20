@@ -195,14 +195,6 @@ function Register() {
           </div>
         </form>
       </div>
-      <span className="flex w-screen justify-center">
-        <h1 className="bg-gray-200 p-3 rounded-xl text-gray-600 text-lg absolute">
-          Create Student Account
-        </h1>
-        <Link className="p-2 mt-20 absolute" href={"/"}>
-          Staff member? Login here.
-        </Link>
-      </span>
     </div>
   );
 }

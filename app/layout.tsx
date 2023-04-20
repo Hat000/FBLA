@@ -12,6 +12,7 @@ export default function RootLayout({
       <body>
         <div className="absolute">
           <NavBar />
+          
         </div>
         {children}
       </body>
