@@ -1,12 +1,9 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 function LoginPage() {
-  return (
-    <div>
-      <Link href="/student">Student? Login here</Link>
-      <Link href="/staff">Staff? Login here</Link>
-    </div>
-  );
+  redirect("/login/student");
+  return <></>;
 }
 
 export default LoginPage;

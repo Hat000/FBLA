@@ -31,7 +31,7 @@ function NavBarExpanded() {
       </li>
 
       <span>
-        <PortalButton text={"Student Portal"} route={"/login/student"} />
+        <PortalButton text={"Student Portal"} route={"/student"} />
       </span>
       <PortalButton text={"Staff Portal"} route={"/login/staff"} />
       <PortalButton text={"Help"} route={"/help/"}/> 

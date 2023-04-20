@@ -12,7 +12,9 @@ function logId(userInfo: {
   lName: string;
   password: string;
   points: number;
-  grade: number
+  grade: number;
+  sports: [string];
+  clubs: [string];
 }): boolean {
   // @ts-ignore
   let uId = userInfo.id;
@@ -48,7 +50,7 @@ export default function makeIdPage({ params }: { params: { info: any } }) {
     <div>
       <div className="grid h-screen place-items-center">
         <h1 className="bg-gray-300 p-2 border border-purple-400">
-          Your student ID is {data.id};
+          Your student ID is {data.id}
         </h1>
       </div>
     </div>

@@ -1,5 +1,9 @@
-{
-  "Mr. Schroyer": {
-    "Years": 100
+[
+  {
+    "id": "2kiZRj23uy2hTvpwvzEnpTt755FEA46w",
+    "email": "teacher@email.org",
+    "fName": "Fengyou",
+    "lName": "Liu",
+    "password": "fbla1234"
   }
-}
+]

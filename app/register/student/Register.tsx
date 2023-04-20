@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import makeId from "../../(misc)/makeId";
 import React, { useEffect, useState } from "react";
-import ids from "../../../db/ids.json";
 
 
 
@@ -184,6 +183,8 @@ function Register() {
                     password: pass,
                     points: 0,
                     grade: grade, 
+                    sports: [],
+                    clubs: [],
                   })}`
                 );
               }}

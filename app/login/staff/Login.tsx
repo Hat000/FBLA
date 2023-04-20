@@ -1,23 +1,53 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
 
-export const Login = () => {
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    
-  }
+import React, { useEffect, useState } from "react";
+import staff from "../../../db/staff.json";
+import logins from "../../../db/logins.json";
+import { useRouter } from "next/navigation";
+import { parseCookies, setCookie, destroyCookie } from "nookies";
+
+function Login() {
+  const router = useRouter();
+
+  let loginKey = "";
+  let staffId: string;
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    for (var st of staff) {
+      if (pass === st.password) {
+        for (var lg of logins) {
+          if (st.id === lg[0]) {
+            loginKey = lg[1];
+            staffId = lg[0];
+          }
+        }
+      }
+    }
+
+    // let msg: string =
+    //   pass === confirm
+    //     ? `Account created with password: ${pass} and email: ${email}`
+    //     : `Passwords do not match. Please try again.`;
+    // alert(msg);
+    console.log(loginKey);
+    setCookie(null, 'loginKey', loginKey);
+    setCookie(null, 'staffId', staffId);
+    router.push("/staff");
+  };
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
   return (
-    <div className="grid h-screen place-items-center">
+    <div className="select-auto w-screen h-screen">
       <form
         action="/send-data-here"
         method="post"
         onSubmit={handleSubmit}
-        className="flex flex-col"
+        className="grid h-screen place-items-center"
       >
+        <h1>Staff Login</h1>
         <div className="flex flex-col gap-3">
           <div className="flex flex-col border-dotted hover:border-solid border-2 border-gray-200 w-fit rounded-lg p-3">
             <label htmlFor="email" className="text-gray-700">
@@ -36,7 +66,7 @@ export const Login = () => {
           </div>
           <div className="flex flex-col border-dotted hover:border-solid border-2 border-gray-200 w-fit rounded-lg p-3">
             <label htmlFor="password" className="text-gray-700">
-              Password:
+              Enter Password:
             </label>
             <input
               value={pass}
@@ -49,14 +79,19 @@ export const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="self-start bg-gray-100">
-            Log In
+          <button
+            type="submit"
+            className="self-start border-solid border-2 border-gray-400 bg-gray-200 hover:bg-gray-300 p-2 hover:shadow rounded"
+          >
+            <h2>Login</h2>
           </button>
-          <p>Don&apost have an account yet?</p>
-          <Link href="/register">Make one here</Link>
+          <button onClick={() => {
+            router.push("/login/student");
+          }}>Student? Sign in here.</button>
         </div>
       </form>
-      <h1></h1>
     </div>
   );
-};
+}
+
+export default Login;
