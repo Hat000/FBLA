@@ -1,9 +1,9 @@
-//(MASSIVE INFINTE LOOP FOR SOME REASON)
-import { use } from "react";
 import ids from "../../../../../db/ids.json";
 import students from "../../../../../db/students.json";
+import logins from "../../../../../db/logins.json";
 import * as fs from "fs";
 import { redirect } from "next/navigation";
+import makeId from "../../../../(misc)/makeId";
 
 function logId(userInfo: {
   id: string;
@@ -11,22 +11,32 @@ function logId(userInfo: {
   fName: string;
   lName: string;
   password: string;
+  points: number;
+  grade: number
 }): boolean {
-  if (ids.includes(userInfo.id as never)) {
+  // @ts-ignore
+  let uId = userInfo.id;
+  if (ids.includes(uId as never)) {
     return false;
   }
   fs.writeFile(
-    "/workspaces/fbla-project/db/ids.json",
+    "/home/finnbowman/Desktop/projects/fbla/fbla-project-final/FBLA/db/ids.json",
     JSON.stringify([...ids, userInfo.id]),
     (err) => {}
   );
   fs.writeFile(
-    "/workspaces/fbla-project/db/students.json",
+    "/home/finnbowman/Desktop/projects/fbla/fbla-project-final/FBLA/db/students.json",
     JSON.stringify([...students, userInfo]),
+    (err) => {}
+  );
+  fs.writeFile(
+    "/home/finnbowman/Desktop/projects/fbla/fbla-project-final/FBLA/db/logins.json",
+    JSON.stringify([...logins, [userInfo.id, makeId(64)]]),
     (err) => {}
   );
   return true;
 }
+
 
 export default function makeIdPage({ params }: { params: { info: any } }) {
   let data: any = JSON.parse(decodeURIComponent(params.info));

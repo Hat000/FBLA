@@ -5,13 +5,11 @@ import type student from "../../(misc)/student";
 
 function StudentPage({ params }: { params: { id: string }}) {
   const userLoggedIn = true;
-  let studentInfo: student | undefined;
-  for (var student of students) {
-    console.log(student.id);
-    console.log(params.id);
-    console.log(student.id === params.id)
-    if (student.id === params.id) {
-      studentInfo = student;
+  let studentInfo: any;
+  for (var st of students) {
+    let sId = (st as any).id;
+    if (sId === params.id) {
+      studentInfo = st;
     }
   }
   if (!userLoggedIn) {

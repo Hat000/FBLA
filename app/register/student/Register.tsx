@@ -2,25 +2,15 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import makeId from "../../(misc)/makeId";
 import React, { useEffect, useState } from "react";
 import ids from "../../../db/ids.json";
 
-function makeId(length: number): string {
-  let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
-}
+
 
 function Register() {
   const districts = ["Bellingham Public Schools"];
+  const grades = [9, 10, 11, 12];
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -42,6 +32,7 @@ function Register() {
   const [lName, setLName] = useState("");
   const [confirm, setConfirm] = useState("");
   const [district, setDistrict] = useState("Select district");
+  const [grade, setGrade] = useState("Select grade")
   const [bannerMsg, setBannerMsg] = useState("");
   const [bannerColor, setBannerColor] = useState("");
   const [buttonColor, setButtonColor] = useState(
@@ -160,6 +151,20 @@ function Register() {
                 </option>
               ))}
             </select>
+            <select
+              name="grade"
+              id="grade"
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              className="border-solid border-2 border-gray-300 bg-gray-200 w-fit p-1.5 rounded"
+              required
+            >
+              {grades.map((gr) => (
+                <option value={gr} key={gr}>
+                  {gr}
+                </option>
+              ))}
+            </select>
 
             <button
               type="submit"
@@ -177,6 +182,8 @@ function Register() {
                     fName: fName,
                     lName: lName,
                     password: pass,
+                    points: 0,
+                    grade: grade, 
                   })}`
                 );
               }}

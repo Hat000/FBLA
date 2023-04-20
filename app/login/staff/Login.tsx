@@ -52,7 +52,7 @@ export const Login = () => {
           <button type="submit" className="self-start bg-gray-100">
             Log In
           </button>
-          <p>Don't have an account yet?</p>
+          <p>Don&apost have an account yet?</p>
           <Link href="/register">Make one here</Link>
         </div>
       </form>

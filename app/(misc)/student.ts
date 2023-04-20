@@ -4,4 +4,6 @@ export default interface student {
     fName: string, 
     lName: string,
     password: string,
+    points: number,
+    grade: number,
 }
