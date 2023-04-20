@@ -14,21 +14,19 @@ export default function SportsPage() {
   const [isChecked4, setIsChecked4] = useState(false);
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
-  const cookies = parseCookies()
-  console.log(cookies);
+  var cookies = parseCookies();
 
+  let studentInfo: any;
+  for (var st of students) {
+    let sId = (st as any).id;
+    if (sId === parseCookies().studentId) {
+      studentInfo = st;
+    }
+  }
 
-  // let studentInfo: any;
-  // for (var st of students) {
-  //   let sId = (st as any).id;
-  //   if (sId === nookies("")) {
-  //     studentInfo = st;
-  //   }
-  // }
-
-  // for (var lg of logins) {
-  //   if (lg[0] === window.localStorage.getItem("studentId")) { 
-  //     if (lg[1] === window.localStorage.getItem("loginKey")) {
+  for (var lg of logins) {
+    if (lg[0] === parseCookies().studentId) { 
+      if (lg[1] === parseCookies().loginKey) {
         return (
           <div className="flex w-screen justify-center">
             <div className="flex-col">
@@ -85,12 +83,14 @@ export default function SportsPage() {
                   sports.push("Cross County/Track");
                 }
 
-                router.push(`/student/sports/add/${JSON.stringify(sports)}`)
+                router.push(`/student/sports/add/${JSON.stringify({ sports: sports, id: cookies.studentId})}`)
               }}>Save choices</button>
             </div>
           </div>
         );
-
+      }
+    }
+  }
   router.push("/login/student");
-   return <></>;
+  return <></>;
 }
